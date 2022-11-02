@@ -1,1 +1,26 @@
 /* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/** {*/
+/*  font-family: Lobster-Regular, sans-serif !important;*/
+/*}*/
+
+html, body, .root {
+  height: 100%;
+  min-height: 100%;
+  font-family: Lobster-Regular, sans-serif;
+}
+
+@font-face {
+  font-family: Lobster-Regular;
+  src: url(assets/font/Lobster-Regular.ttf) format("truetype");
+}
+@font-face {
+  font-family: Merriweather-Light;
+  src: url(assets/font/Merriweather-Light.ttf) format("truetype");
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

@@ -1,0 +1,160 @@
+<div class="rounded-lg bg-white p-8 shadow-lg lg:col-span-3 lg:p-12">
+  <form [formGroup]="form" action="" class="space-y-4 rounded-lg border border-gray-300 p-4">
+    <text-input
+      label="Nazwa przepisu"
+      name="name">
+    </text-input>
+    <!-----------Poziom Trudności-------->
+    <div>
+      <label class="font-bold">Poziom Trudności</label><br>
+      <select class="w-32 rounded-lg border border-gray-300 p-3 text-sm" formControlName="level">
+        <option disabled selected value=''>Poziom Trudności</option>
+        <option *ngFor="let type of levelOperator | keyvalue " [value]="type.key">{{type.value}}</option>
+      </select>
+    </div>
+    <!-------Czas przygotowania------>
+    <text-input
+      label="Czas przygotowania"
+      name="prepareTime">
+    </text-input>
+    <!----------Dodaj Tagi--------->
+    <div>
+      <label class="font-bold">#Tag</label>
+      <input
+        #tag
+        class="w-full rounded-lg border border-gray-300 p-3 text-sm"
+        type="text"
+        placeholder="np. obiad"
+      />
+    </div>
+    <button (click)="addTag(tag.value); tag.value = ''"
+            class="inline-block bg-emerald-600 hover:bg-emerald-700 text-sm text-white uppercase py-2 px-4 rounded-md mr-3">
+      #Dodaj tag
+    </button>
+    <ng-container *ngFor="let tag of tags.controls; index as i" formArrayName="tags">
+      <ng-container [formGroupName]="i">
+      <span
+        class="inline-flex items-center justify-center rounded-full bg-purple-100 px-2.5 py-0.5 text-purple-500 mr-4">
+    <p class="whitespace-nowrap text-sm">#{{tag.get('name')?.value}}</p>
+
+    <button
+      (click)="deleteTag(i)"
+      class="-mr-1 ml-1.5 inline-block rounded-full bg-purple-200 p-0.5 text-purple-600 transition hover:text-purple-700">
+      <span class="sr-only">Remove badge</span>
+      <svg
+        class="h-3 w-3"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.5"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M6 18L18 6M6 6l12 12"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </button>
+  </span>
+      </ng-container>
+    </ng-container>
+
+
+    <!---------Opis Dania--------->
+    <div>
+      <label class="font-bold" for="description">Opis Przepisu</label>
+      <textarea
+        class="w-full rounded-lg border border-gray-300 p-3 text-sm"
+        formControlName="description"
+        id="description"
+        rows="8">
+    </textarea>
+    </div>
+
+    <!---------Dodaj Składniki---------->
+    <div class=" rounded border border-gray-300 p-8 w-full">
+      <h5 class="text-center font-bold">Składniki</h5>
+      <ng-container *ngFor="let ingredient of ingredients.controls; index as i" formArrayName="ingredients">
+        <ng-container [formGroupName]="i">
+          <label class="font-bold">{{i + 1}}. Składnik</label>
+          <div class="grid grid-cols-3 gap-4 mt-3 md:grid-cols-8">
+            <input class="rounded-lg border border-gray-300 p-3 text-sm w-full col-span-5"
+                   formControlName="name"
+                   placeholder="np.marchew"
+                   type="text"
+                   #autocomplete
+                   [matAutocomplete]="auto"
+                   (keydown)="loadIngredients(autocomplete.value)">
+            <mat-autocomplete #auto="matAutocomplete">
+              <mat-option *ngFor="let ingredient of ingredientsAutocomplete" [value]="ingredient.name">
+                {{ingredient.name}}
+              </mat-option>
+            </mat-autocomplete>
+            <!----------------Dodaj Pojemność----------->
+            <input class="rounded-lg border border-gray-300 p-3 text-sm col-span-2"
+                   label="Podaj ilość"
+                   formControlName="capacity"
+                   placeholder="ilość np. 5KG"/>
+            <select class="rounded-lg border border-gray-300 p-3 text-sm" formControlName="capacityType">
+              <option class="font-bold" disabled selected value=''>Pojemność</option>
+              <option *ngFor="let type of capacityTypeOperator | keyvalue " [value]="type.key">{{type.value}}</option>
+            </select>
+          </div>
+        </ng-container>
+        <button class="inline-block bg-rose-600 text-xs text-white uppercase py-2 px-4 my-4 rounded-md"
+          (click)="deleteIngredience(i)">
+         Usuń składnik
+        </button> <br>
+      </ng-container>
+    </div>
+
+    <button
+      (click)="addIngredient()"
+      class="rounded-md bg-emerald-600 text-sm text-white uppercase hover:bg-emerald-700 p-3">
+       + Dodaj składnik
+    </button>
+<!----------STEPS---------->
+    <div class=" rounded border border-gray-300 p-8 w-full">
+      <h5 class="text-center font-bold">Kroki przygotowania przepisu</h5>
+      <ng-container *ngFor="let step of steps.controls; index as i" formArrayName="steps">
+        <ng-container [formGroupName]="i">
+          <label class="font-bold">{{i + 1}}. Krok</label>
+          <div class="gap-4 mt-3 md:grid-cols-8">
+            <input class="rounded-lg border border-gray-300 p-3 text-sm w-full col-span-5"
+                   formControlName="description"
+                   placeholder="np.wymieszaj wszytskie składniki..."
+                   type="text"/>
+          </div>
+        </ng-container>
+        <button class="bg-rose-600 text-white text-xs uppercase py-2 px-4 my-4 rounded-md"
+                (click)="deleteStep(i)">
+          Usuń Krok
+        </button> <br>
+      </ng-container>
+    </div>
+
+    <a
+      (click)="addStep()"
+      class="inline-block rounded-md bg-emerald-600 text-sm text-white uppercase hover:bg-emerald-700 p-3">
+      + Dodaj krok
+    </a>
+
+    <input class="rounded-lg border border-gray-300 p-3 text-sm w-full col-span-5"
+           formControlName="image"
+           type="file"
+           (change)="onFileChange($event)"
+    />
+  </form>
+  <!----------BUTTON Zapisz Formularz--------->
+  <div class="mt-4">
+
+    <button
+      (click)="onSubmit()"
+      class="bg-black hover:bg-emerald-700 text-white uppercase py-2 px-4 rounded-md"
+      type="submit">
+      Zapisz Przepis
+    </button>
+  </div>
+  <!--  {{form.value | json}}-->
+</div>
