@@ -1,11 +1,12 @@
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
+require('.env').config();
 
 export const environment = {
   production: false,
-  supabaseUrl: process.env['supabaseUrl'] ?? '',
-  supabaseKey: process.env['supabaseKey'] ?? '',
+  supabaseUrl: 'https://hkmzuksvnboqgacevstn.supabase.co',
+  supabaseKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhrbXp1a3N2bmJvcWdhY2V2c3RuIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NjY4OTQ1MTEsImV4cCI6MTk4MjQ3MDUxMX0.Ex7_T5QWyVikS27QLDftJnlYX4qq06pa994DB9EeIaU',
 };
 
 /*
