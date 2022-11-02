@@ -1,20 +1,20 @@
 <section class="plate">
-  <img class="md:visible md:z-0 invisible" src="assets/images/food-transparent-background-7.png"
+  <img class="lg:visible lg:z-0 invisible" src="assets/images/food-transparent-background-7.png"
        style="position:absolute; top: 8%; left: 50%; transform: translateX(-50%);">
-  <h1 class="md:visible md:z-10 invisible"
+  <h1 class="lg:visible lg:z-10 invisible"
       style="font-family: Lobster-Regular, sans-serif; position:absolute; top: 5%; left: 50%; transform: translateX(-50%); font-size: 7rem; color: #f5faff">
-    Wsuwaj<span class="md:ml-20">Zdrowo</span>
+    Wsuwaj<span class="lg:ml-20">Zdrowo</span>
   </h1>
-  <img class="basil md:visible md:z-0 invisible " src="assets/images/basil.png"
+  <img class="basil hidden lg:block lg:z-0" src="assets/images/basil.png"
        style="position:absolute; top: 10%; left: 20%; transform: translateX(-50%);">
-  <img class="basil md:visible md:z-0 invisible " src="assets/images/basil.png"
+  <img class="basil hidden lg:block  lg:z-0" src="assets/images/basil.png"
        style="position:absolute; transform: scaleX(-1); top: 10%; right:3%">
 </section>
 
 <!------------------------------------------------->
-<section class="md:mt-72">
+<section class="lg:mt-72">
     <p class="text-center text-4xl mb-10 text-yellow-500" style="font-family: Lobster-Regular, sans-serif">Nasze Top 4</p>
-  <div class="grid md:grid-cols-2 gap-8 mx-4 mb-4">
+  <div class="grid lg:grid-cols-2 gap-8 mx-4 mb-4">
     <recipe-card *ngFor="let recipe of favouriteRecipes" [recipe]="recipe"></recipe-card>
   </div>
 </section>

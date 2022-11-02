@@ -78,7 +78,7 @@
       <ng-container *ngFor="let ingredient of ingredients.controls; index as i" formArrayName="ingredients">
         <ng-container [formGroupName]="i">
           <label class="font-bold">{{i + 1}}. Składnik</label>
-          <div class="grid grid-cols-3 gap-4 mt-3 md:grid-cols-8">
+          <div class="grid grid-cols-3 gap-4 mt-3 lg:grid-cols-8">
             <input class="rounded-lg border border-gray-300 p-3 text-sm w-full col-span-5"
                    formControlName="name"
                    placeholder="np.marchew"
@@ -120,7 +120,7 @@
       <ng-container *ngFor="let step of steps.controls; index as i" formArrayName="steps">
         <ng-container [formGroupName]="i">
           <label class="font-bold">{{i + 1}}. Krok</label>
-          <div class="gap-4 mt-3 md:grid-cols-8">
+          <div class="gap-4 mt-3 lg:grid-cols-8">
             <input class="rounded-lg border border-gray-300 p-3 text-sm w-full col-span-5"
                    formControlName="description"
                    placeholder="np.wymieszaj wszytskie składniki..."

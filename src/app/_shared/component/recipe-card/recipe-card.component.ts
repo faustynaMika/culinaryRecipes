@@ -21,7 +21,7 @@ import {Router} from "@angular/router";
       </div>
       <div class="flex flex-1 flex-col justify-between">
         <div class="border-l border-gray-900/10 p-4 sm:border-l-transparent sm:p-6">
-          <a href="#">
+          <a>
             <h3 class="font-bold uppercase text-gray-900">
               {{recipe.name}}
             </h3>
