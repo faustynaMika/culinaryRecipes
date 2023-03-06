@@ -1,5 +1,8 @@
-<app-navigation></app-navigation>
-<div class="container mx-auto">
-  <router-outlet></router-outlet>
+<div id="page-container">
+  <app-navigation></app-navigation>
+  <section class="pb-60 pt-5">
+    <router-outlet></router-outlet>
+    <app-footer id="footer"></app-footer>
+  </section>
 </div>
-<app-footer></app-footer>
+
