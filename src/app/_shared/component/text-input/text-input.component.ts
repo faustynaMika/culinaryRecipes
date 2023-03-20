@@ -1,24 +1,20 @@
-import {Component, forwardRef, Input, OnInit} from '@angular/core';
-import {
-  ControlContainer,
-  FormGroupDirective,
-} from "@angular/forms";
+import {Component, Input} from '@angular/core';
+import {ControlContainer, FormGroupDirective,} from "@angular/forms";
 
 @Component({
   selector: 'text-input',
   template: `
     <div>
-      <label class="font-bold" [for]="name">{{label}}</label>
+      <label class="" [for]="name">{{label}}</label>
       <input
-        class="w-full rounded-lg border border-gray-300 p-3 text-sm"
+        class="w-full rounded-lg p-3 text-sm bg-gray-300"
         [id]="name"
         type="text"
         [formControlName]="name"
       />
     </div>
   `,
-  styles: [
-  ],
+  styles: [],
   viewProviders: [
     {
       provide: ControlContainer,
@@ -26,10 +22,10 @@ import {
     }
   ]
 })
-export class TextInputComponent  {
+export class TextInputComponent {
 
-@Input() label: string = ''
-@Input() name: string = ''
-@Input() placeholder: string = ''
+  @Input() label: string = ''
+  @Input() name: string = ''
+  @Input() placeholder: string = ''
 
 }

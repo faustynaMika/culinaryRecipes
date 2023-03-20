@@ -1,22 +1,25 @@
-<header style="font-family: Lobster-Regular, sans-serif">
-  <div class="mx-auto w-full px-4 lg:px-60 navigation">
-    <div class="flex h-32 items-center justify-between">
-      <div class="flex items-center">
-        <a class="block text-teal-600" href="/">
-          <img  alt="img" class="h-24 w-full mx-auto" src="assets/images/Color%20logo%20-%20no%20background.svg">
-        </a>
+<header class="pb-10">
+  <div class="mx-auto w-full px-4 lg:px-60 lg:pt-10 navigation">
+    <div class="flex items-center justify-between">
       </div>
-        <nav>
-          <ul class="flex items-center gap-6 text-sm">
+      <div class="mx-auto text-center lg:pb-5">
+       <a href="">
+         <h3 class="text-gray-900 text-2xl lg:text-6xl mx-auto underline underline-offset-1">My Culinary Book</h3>
+       </a>
+      </div>
+        <nav class="lg:w-1/2 mx-auto text-center">
+          <ul class="grid grid-cols-3 text-sm lg:text-base">
             <li *ngFor="let item of items">
-              <a class="text-white text-xl transition hover:text-gray-700"
+              <a class="text-gray-900 relative before:absolute before:-bottom-1 before:h-0.5 before:w-full before:origin-left before:scale-x-0 before:bg-gray-900 before:transition hover:before:scale-100"
               [href]="item.url">
                 {{item.item}}
               </a>
             </li>
+            <li class="lg:pr-5">
+            <a class="text-gray-900 relative before:absolute before:-bottom-1 before:h-0.5 before:w-full before:origin-left before:scale-x-0 before:bg-gray-900 before:transition hover:before:scale-100" href="/recipe/add">Dodaj przepis</a>
+            </li>
           </ul>
+
         </nav>
-      </div>
     </div>
-  <img alt="img" src="assets/images/curve.svg" class="lg:w-full hidden lg:block">
 </header>

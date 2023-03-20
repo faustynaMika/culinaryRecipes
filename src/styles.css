@@ -3,10 +3,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/** {*/
-/*  font-family: Lobster-Regular, sans-serif !important;*/
-/*}*/
-
 html, body, .root {
   height: 100%;
   min-height: 100%;
@@ -14,13 +10,18 @@ html, body, .root {
 }
 
 @font-face {
-  font-family: Lobster-Regular;
-  src: url(assets/font/Lobster-Regular.ttf) format("truetype");
-}
-@font-face {
-  font-family: Merriweather-Light;
-  src: url(assets/font/Merriweather-Light.ttf) format("truetype");
+  font-family: 'Russo One', sans-serif;
+  src: url(assets/font/Baskervville-Regular.ttf) format("truetype");
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'Baskervville', serif;
+  text-transform: uppercase;
+  background: #e1e1e1;
+
+}

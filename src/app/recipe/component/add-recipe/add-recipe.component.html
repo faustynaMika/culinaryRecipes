@@ -1,34 +1,36 @@
-<div class="rounded-lg bg-white p-8 shadow-lg lg:col-span-3 lg:p-12">
+<div class="rounded-lg bg-gray-900 p-8 shadow-lg lg:col-span-3 lg:w-1/2 lg:mx-auto mx-2">
   <form [formGroup]="form" action="" class="space-y-4 rounded-lg border border-gray-300 p-4">
     <text-input
+      class="text-gray-300"
       label="Nazwa przepisu"
       name="name">
     </text-input>
     <!-----------Poziom Trudności-------->
     <div>
-      <label class="font-bold">Poziom Trudności</label><br>
-      <select class="w-32 rounded-lg border border-gray-300 p-3 text-sm" formControlName="level">
+      <label class="text-gray-100">Poziom Trudności</label><br>
+      <select class="w-32 rounded-lg bg-gray-300 p-3 text-sm text-gray-600" formControlName="level">
         <option disabled selected value=''>Poziom Trudności</option>
         <option *ngFor="let type of levelOperator | keyvalue " [value]="type.key">{{type.value}}</option>
       </select>
     </div>
     <!-------Czas przygotowania------>
     <text-input
+      class="text-gray-600"
       label="Czas przygotowania"
       name="prepareTime">
     </text-input>
     <!----------Dodaj Tagi--------->
     <div>
-      <label class="font-bold">#Tag</label>
+      <label class="text-gray-300">#Tag</label>
       <input
         #tag
-        class="w-full rounded-lg border border-gray-300 p-3 text-sm"
+        class="w-full rounded-lg bg-gray-300 p-3 text-sm text-gray-100"
         type="text"
         placeholder="np. obiad"
       />
     </div>
     <button (click)="addTag(tag.value); tag.value = ''"
-            class="inline-block bg-emerald-600 hover:bg-emerald-700 text-sm text-white uppercase py-2 px-4 rounded-md mr-3">
+            class="bg-gray-300 text-grey-900 text-xs uppercase py-2 px-4 my-4 rounded-md hover:bg-gray-500">
       #Dodaj tag
     </button>
     <ng-container *ngFor="let tag of tags.controls; index as i" formArrayName="tags">
@@ -63,9 +65,9 @@
 
     <!---------Opis Dania--------->
     <div>
-      <label class="font-bold" for="description">Opis Przepisu</label>
+      <label class="text-gray-300" for="description">Opis Przepisu</label>
       <textarea
-        class="w-full rounded-lg border border-gray-300 p-3 text-sm"
+        class="w-full rounded-lg bg-gray-300 p-3 text-sm"
         formControlName="description"
         id="description"
         rows="8">
@@ -73,13 +75,13 @@
     </div>
 
     <!---------Dodaj Składniki---------->
-    <div class=" rounded border border-gray-300 p-8 w-full">
-      <h5 class="text-center font-bold">Składniki</h5>
+    <div class=" rounded-xl p-8 w-full">
+      <h5 class="text-center text-gray-300">Składniki</h5>
       <ng-container *ngFor="let ingredient of ingredients.controls; index as i" formArrayName="ingredients">
         <ng-container [formGroupName]="i">
-          <label class="font-bold">{{i + 1}}. Składnik</label>
-          <div class="grid grid-cols-3 gap-4 mt-3 lg:grid-cols-8">
-            <input class="rounded-lg border border-gray-300 p-3 text-sm w-full col-span-5"
+          <label class="text-gray-300">{{i + 1}}. Składnik</label>
+          <div class="grid grid-cols-3 gap-2 mt-3 lg:grid-cols-8">
+            <input class="rounded-lg p-3 text-sm w-full bg-gray-300 col-span-5"
                    formControlName="name"
                    placeholder="np.marchew"
                    type="text"
@@ -92,17 +94,17 @@
               </mat-option>
             </mat-autocomplete>
             <!----------------Dodaj Pojemność----------->
-            <input class="rounded-lg border border-gray-300 p-3 text-sm col-span-2"
+            <input class="rounded-lg bg-gray-300 p-3 text-sm text-gray-400"
                    label="Podaj ilość"
                    formControlName="capacity"
                    placeholder="ilość np. 5KG"/>
-            <select class="rounded-lg border border-gray-300 p-3 text-sm" formControlName="capacityType">
-              <option class="font-bold" disabled selected value=''>Pojemność</option>
+            <select class="rounded-lg bg-gray-300 p-3 text-sm col-span-2" formControlName="capacityType">
+              <option class="text-gray-300" disabled selected value=''>Pojemność</option>
               <option *ngFor="let type of capacityTypeOperator | keyvalue " [value]="type.key">{{type.value}}</option>
             </select>
           </div>
         </ng-container>
-        <button class="inline-block bg-rose-600 text-xs text-white uppercase py-2 px-4 my-4 rounded-md"
+        <button class=" bg-gray-300 text-grey-900 text-xs uppercase py-2 px-4 my-4 rounded-md hover:bg-gray-500"
           (click)="deleteIngredience(i)">
          Usuń składnik
         </button> <br>
@@ -111,36 +113,37 @@
 
     <button
       (click)="addIngredient()"
-      class="rounded-md bg-emerald-600 text-sm text-white uppercase hover:bg-emerald-700 p-3">
+      class="rounded-md bg-gray-300 text-grey-900 text-sm uppercase hover:bg-gray-500 p-3">
        + Dodaj składnik
     </button>
 <!----------STEPS---------->
     <div class=" rounded border border-gray-300 p-8 w-full">
-      <h5 class="text-center font-bold">Kroki przygotowania przepisu</h5>
+      <h5 class="text-center text-gray-300">Kroki przygotowania przepisu</h5>
       <ng-container *ngFor="let step of steps.controls; index as i" formArrayName="steps">
         <ng-container [formGroupName]="i">
-          <label class="font-bold">{{i + 1}}. Krok</label>
+          <label class="text-gray-300">{{i + 1}}. Krok</label>
           <div class="gap-4 mt-3 lg:grid-cols-8">
-            <input class="rounded-lg border border-gray-300 p-3 text-sm w-full col-span-5"
+            <input class="rounded-lg bg-gray-300 p-3 text-sm w-full col-span-5"
                    formControlName="description"
                    placeholder="np.wymieszaj wszytskie składniki..."
                    type="text"/>
           </div>
         </ng-container>
-        <button class="bg-rose-600 text-white text-xs uppercase py-2 px-4 my-4 rounded-md"
+        <button class="bg-gray-300 text-grey-900 text-xs uppercase py-2 px-4 my-4 rounded-md hover:bg-gray-500"
                 (click)="deleteStep(i)">
-          Usuń Krok
+          - Usuń Krok
         </button> <br>
       </ng-container>
+      <a
+        (click)="addStep()"
+        class="bg-gray-300 text-grey-900 text-xs uppercase py-2 px-4 my-6 rounded-md hover:bg-gray-500">
+        + Dodaj Krok
+      </a>
     </div>
 
-    <a
-      (click)="addStep()"
-      class="inline-block rounded-md bg-emerald-600 text-sm text-white uppercase hover:bg-emerald-700 p-3">
-      + Dodaj krok
-    </a>
 
-    <input class="rounded-lg border border-gray-300 p-3 text-sm w-full col-span-5"
+
+    <input class="rounded-lg border border-gray-300 p-3 text-sm text-gray-300 w-full col-span-5"
            formControlName="image"
            type="file"
            (change)="onFileChange($event)"
@@ -151,7 +154,7 @@
 
     <button
       (click)="onSubmit()"
-      class="bg-black hover:bg-emerald-700 text-white uppercase py-2 px-4 rounded-md"
+      class=" bg-gray-300 text-grey-900 text-xs uppercase py-2 px-4 mt-6 rounded-md hover:bg-gray-500"
       type="submit">
       Zapisz Przepis
     </button>

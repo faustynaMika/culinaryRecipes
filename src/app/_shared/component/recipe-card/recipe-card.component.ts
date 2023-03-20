@@ -7,34 +7,35 @@ import {Router} from "@angular/router";
 @Component({
   selector: 'recipe-card',
   template: `
-    <article class="flex bg-white border border-gray-200 transition hover:shadow-xl rounded-md p-1">
-      <div class="rotate-180 p-2 [writing-mode:_vertical-lr]">
-        <time
-          datetime="2022-10-10"
-          class="flex items-center justify-between gap-4 text-xs font-bold uppercase text-gray-900">
-          {{recipe.created_at | date: 'yyyy-MM-dd'}}
-        </time>
-      </div>
-      <div class="hidden sm:block sm:basis-56 ">
-        <img [src]="URL_PREFIX + recipe.imageUrl"
-             class=" rounded-md aspect-square h-full w-full object-cover"/>
-      </div>
-      <div class="flex flex-1 flex-col justify-between">
-        <div class="border-l border-gray-900/10 p-4 sm:border-l-transparent sm:p-6">
-          <a>
-            <h3 class="font-bold uppercase text-gray-900">
-              {{recipe.name}}
-            </h3>
-          </a>
-          <p class="mt-2 text-sm leading-relaxed text-gray-700 line-clamp-3">
-            {{recipe.description}}
-          </p>
-          <p class="font-bold uppercase text-gray-900">POZIOM TRUDNOŚCI:{{recipe.level}}</p>
-          <p class="font-bold uppercase text-gray-900">Czas przygotowania:{{recipe.prepareTime}}min</p>
-          <button class="text-amber-400 text-sm" (click)="goTo()">...rozwiń</button>
+    <div class="h-full">
+      <button class="h-full" (click)="goTo()">
+        <div class="max-w-lg p-4 shadow-md bg-gray-900 border-2 border-gray-500 shadow-xl shadow-gray-500 text-gray-200 text-start rounded-xl h-full">
+          <div class="space-y-4">
+            <div class="space-y-2">
+              <img alt="img" [src]="URL_PREFIX + recipe.imageUrl"
+                   class="block object-cover object-center w-full rounded-md h-72 bg-gray-500">
+              <div class="flex items-center text-xs">
+                <span> {{recipe.created_at | date: 'yyyy-MM-dd'}}</span>
+              </div>
+            </div>
+            <div class="space-y-2 h-full">
+              <h3 class="text-xl text-sky-500">{{recipe.name}}</h3>
+              <p class="leading-snug text-gray-200"
+                 style="display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;">
+                {{recipe.description}}</p>
+              <p class="leading-snug text-blue-200">{{recipe.level}}</p>
+              <p class="leading-snug text-blue-200">{{recipe.prepareTime}} min</p>
+            </div>
+          </div>
         </div>
-      </div>
-    </article>
+      </button>
+    </div>
+
+
   `,
   styles: [],
   viewProviders: [
@@ -61,8 +62,11 @@ export class RecipeCardComponent {
     steps: [],
     tags: [],
   }
-  constructor(private _router: Router) { }
   URL_PREFIX: string = 'https://hkmzuksvnboqgacevstn.supabase.co/storage/v1/object/public/recipe-storage/';
+
+  constructor(private _router: Router) {
+  }
+
   goTo() {
     this._router.navigate(['recipe/detail/' + this.recipe.id]);
   }
