@@ -9,11 +9,11 @@ import {NavbarItem} from "../../model/navbar-item";
 export class NavigationComponent implements OnInit {
   items: NavbarItem[] = [
     {
-      item: 'Plecane',
+      item: 'Polecane',
       url: '/',
     },
     {
-      item: 'Wszytskie Przepisy',
+      item: 'Przepisy',
       url: '/recipe',
     },
   ]
