@@ -1,4 +1,4 @@
-# American Burger
+# MyCulinaryBook
 https://culinary-recipes.vercel.app/
 ![culinary-recipes](https://user-images.githubusercontent.com/97546871/226618630-d5170ac0-763b-49b0-9385-14ad61d086cf.png)
 
