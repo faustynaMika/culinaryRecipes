@@ -1,10 +1,10 @@
 <div class="grid grid-cols-1 lg:grid-cols-4 w-full px-1 pb-10">
-  <div class="box bg-gray-900 rounded-xl">
-    <img alt="img" [src]="URL_PREFIX + recipe?.imageUrl" class="rounded-xl p-5"/>
+  <div class="box bg-stone-700 rounded-xl">
+    <img alt="img" [src]="URL_PREFIX + recipe?.imageUrl" class="rounded-t-xl"/>
 
     <div class="space-y-4 lg:py-8 px-5 text-gray-200 lg:text-sm text-xs">
       <div>
-        <h3 class="mb-3">Poziom trudności:</h3>
+        <h3 class="my-3">Poziom trudności:</h3>
         {{recipe?.level}}
       </div>
       <div>
@@ -24,7 +24,7 @@
     </div>
   </div>
   <div class="box lg:col-span-3">
-    <div class="mt-2 grid gap-8 relative pl-10 lg:text-sm text-xs">
+    <div class="mt-2 grid gap-8 relative px-10 lg:text-sm text-xs">
       <h1 class="text-xl lg:text-2xl underline text-center">
         {{recipe?.name}}
       </h1>
@@ -47,7 +47,7 @@
         <h3 class="mb-3">Tagi:</h3>
         <ul>
           <li *ngFor="let tags of recipe?.tags"
-              class="m-1 relative inline-block rounded-full bg-gray-900 p-3 ml-1 text-gray-200 text-xs">
+              class="m-1 relative inline-block rounded-full bg-stone-700 p-3 ml-1 text-gray-200 text-xs">
             {{'#' + tags.name}}
           </li>
         </ul>

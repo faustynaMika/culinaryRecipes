@@ -5,9 +5,9 @@ import {ControlContainer, FormGroupDirective,} from "@angular/forms";
   selector: 'text-input',
   template: `
     <div>
-      <label class="" [for]="name">{{label}}</label>
+      <label class="text-gray-300" [for]="name">{{label}}</label>
       <input
-        class="w-full rounded-lg p-3 text-sm bg-gray-300"
+        class="w-full rounded-lg p-3 text-sm text-stone-900 bg-gray-300"
         [id]="name"
         type="text"
         [formControlName]="name"
