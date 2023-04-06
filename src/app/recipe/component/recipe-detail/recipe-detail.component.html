@@ -1,41 +1,42 @@
 <div class="grid grid-cols-1 lg:grid-cols-4 w-full px-1 pb-10">
-  <div class="box bg-stone-700 rounded-xl">
-    <img alt="img" [src]="URL_PREFIX + recipe?.imageUrl" class="rounded-t-xl"/>
+  <div class="box">
+    <img alt="img" [src]="URL_PREFIX + recipe?.imageUrl" class="pt-5"/>
 
-    <div class="space-y-4 lg:py-8 px-5 text-gray-200 lg:text-sm text-xs">
-      <div>
-        <h3 class="my-3">Poziom trudności:</h3>
-        {{recipe?.level}}
-      </div>
-      <div>
-        <h3 class="mb-3">Czas przygotowania:</h3>
-        {{recipe?.prepareTime + ' min '}}
-      </div>
-
+    <div class="space-y-4 lg:py-8 px-10 text-gray-900 font-medium">
+      <h1 class="text-2xl text-center p-3 font-bold">
+        {{recipe?.name}}
+      </h1>
       <!--   INGREDIENCE   -->
       <div>
-        <h3 class="mb-3">Składniki:</h3>
+        <h3 class="mb-3 text-md border-b border-black font-bold ">Składniki:</h3>
         <ul>
           <li *ngFor="let ingredient of recipe?.ingredients" class="mb-2">
-            - {{ingredient.name + ' ' + ingredient.capacity + ' ' + ingredient.capacityType}}
+            - {{ingredient.name +  ' '  + ingredient.capacity +  ' '  + ingredient.capacityType}}
           </li>
         </ul>
+      </div>
+      <div class="p-2">
+        <h3 class="text-base border-b border-black font-bold">Poziom trudności:</h3>
+        {{recipe?.level}}
+      </div>
+      <div class="p-2">
+        <h3 class="text-base border-b border-black font-bold">Czas przygotowania:</h3>
+        {{recipe?.prepareTime + ' min '}}
       </div>
     </div>
   </div>
   <div class="box lg:col-span-3">
-    <div class="mt-2 grid gap-8 relative px-10 lg:text-sm text-xs">
-      <h1 class="text-xl lg:text-2xl underline text-center">
-        {{recipe?.name}}
-      </h1>
+    <div class="mt-2 grid gap-8 relative px-10 font-medium">
       <div>
-        <h3 class="mb-3">Opis:</h3>
+        <h1 class="text-xl text-center p-3 font-bold">
+         czas wziąć się do roboty i przygotować {{recipe?.name}}
+        </h1>
         <p>
           {{recipe?.description}}
         </p>
       </div>
       <div>
-        <h3 class="mb-3">Kroki:</h3>
+        <h3 class="mb-3 border-b border-black">Kroki postępowania:</h3>
         <ul>
           <li *ngFor="let steps of recipe?.steps" class="mt-4">
             {{steps.stepNumber + '.' + steps.description}}
@@ -43,11 +44,11 @@
         </ul>
       </div>
       <!--      TAGS-->
-      <div class="lg:text-sm text-xs">
-        <h3 class="mb-3">Tagi:</h3>
+      <div class="lg:text-sm text-base">
+        <h3 class="mb-3 border-b border-black">Tagi dla wyglądu:</h3>
         <ul>
           <li *ngFor="let tags of recipe?.tags"
-              class="m-1 relative inline-block rounded-full bg-stone-700 p-3 ml-1 text-gray-200 text-xs">
+              class="m-1 relative inline-block p-1 ml-1 text-gray-900 font-bold text-xs">
             {{'#' + tags.name}}
           </li>
         </ul>

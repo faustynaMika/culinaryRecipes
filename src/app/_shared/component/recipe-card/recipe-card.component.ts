@@ -2,37 +2,38 @@ import {Component, Input} from '@angular/core';
 import {ControlContainer, FormGroupDirective, NG_VALUE_ACCESSOR,} from "@angular/forms";
 import {Recipe} from "../../../recipe/model/recipe";
 import {Level} from "../../../recipe/model/enum/level";
-import {Router} from "@angular/router";
 
 @Component({
   selector: 'recipe-card',
   template: `
-    <div class="h-full">
-      <button class="h-full" (click)="goTo()">
-        <div class="max-w-lg p-4 shadow-lg bg-stone-300 text-gray-300 text-start rounded-xl h-full">
-          <div class="space-y-4">
-            <div class="space-y-2">
-              <img alt="img" [src]="URL_PREFIX + recipe.imageUrl" style="filter: brightness(0.8)"
-                   class="block object-cover object-center w-full rounded-xl h-72 bg-gray-500">
-              <div class="flex items-center text-xs">
-                <span> {{recipe.created_at | date: 'yyyy-MM-dd'}}</span>
-              </div>
-            </div>
-            <div class="space-y-2 h-full">
-              <h3 class="text-xl text-stone-700 font-bold">{{recipe.name}}</h3>
-              <p class="leading-snug text-stone-700"
+    <div style="height: 100%">
+      <a class="group relative block bg-black h-full">
+        <img
+          alt="img" [src]="URL_PREFIX + recipe.imageUrl"
+          class="absolute inset-0 h-full w-full object-cover opacity-75 transition-opacity group-hover:opacity-50 rounded-lg"
+          style="filter: brightness(0.7)"
+        />
+
+        <div class="relative p-4 sm:p-6 lg:p-8">
+          <p class="text-xl font-bold text-gray-100 uppercase text-center">{{recipe.name}}</p>
+
+          <div class="mt-32 sm:mt-48 lg:mt-32">
+            <div
+              class="translate-y-8 transform opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100"
+            >
+              <p class="text-sm text-gray-100"
                  style="display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;">
-                {{recipe.description}}</p>
-              <p class="leading-snug text-stone-700">{{recipe.level}}</p>
-              <p class="leading-snug text-stone-700">{{recipe.prepareTime}} min</p>
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;">
+                {{recipe.description}}
+              </p>
+              <p class="text-xs text-white">Trudność:  {{recipe.level}}</p>
+              <p class="text-xs text-white">Czas:  {{recipe.prepareTime}}min</p>
             </div>
           </div>
         </div>
-      </button>
+      </a>
     </div>
 
 
@@ -64,10 +65,4 @@ export class RecipeCardComponent {
   }
   URL_PREFIX: string = 'https://hkmzuksvnboqgacevstn.supabase.co/storage/v1/object/public/recipe-storage/';
 
-  constructor(private _router: Router) {
-  }
-
-  goTo() {
-    this._router.navigate(['recipe/detail/' + this.recipe.id]);
-  }
 }

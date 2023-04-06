@@ -2,16 +2,16 @@
   <div class="mx-auto w-full px-4 lg:px-60 lg:pt-10 navigation">
     <div class="flex items-center justify-between">
       </div>
-      <div class="mx-auto text-center pb-2 lg:pb-5">
+      <div class="mx-auto text-center pb-2">
        <a href="">
-         <h3 class="text-stone-700 text-2xl lg:text-6xl mx-auto underline underline-offset-1">My Culinary Book</h3>
+         <img class="w-2/3 m-auto lg:w-1/2" alt="logo" src="assets/images/Color%20logo%20-%20no%20background.svg">
        </a>
       </div>
-        <nav class="lg:w-1/2 mx-auto text-center">
+        <nav class="lg:w-1/2 mx-auto text-center font-bold">
           <ul class="grid grid-cols-3 text-sm lg:text-base">
             <li *ngFor="let item of items">
               <a class="text-stone-700 relative before:absolute before:-bottom-1 before:h-0.5 before:w-full before:origin-left before:scale-x-0 before:bg-stone-700 before:transition hover:before:scale-100"
-              [href]="item.url">
+              [routerLink]="item.url">
                 {{item.item}}
               </a>
             </li>

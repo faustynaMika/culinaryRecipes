@@ -1,7 +1,8 @@
 <div class="w-full">
   <section>
     <div class="grid lg:grid-cols-3 gap-8 mb-4 px-4 mx-auto">
-      <recipe-card *ngFor="let recipe of favouriteRecipes" [recipe]="recipe"></recipe-card>
+      <recipe-card *ngFor="let recipe of favouriteRecipes" [recipe]="recipe"
+                   [routerLink]="['/recipe/detail/' + this.recipe.id]"></recipe-card>
     </div>
   </section>
 </div>
