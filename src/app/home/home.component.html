@@ -1,8 +1,47 @@
-<div class="w-full">
+
+<section class="text-gray-800 bg-stone-100">
+  <div class="container flex flex-col justify-center px-4 pt-2 lg:flex-row lg:justify-between">
+    <div class="flex w-4/6">
+      <img alt="" class="object-cover w-full hidden lg:block"
+           src="assets/images/ferhat-makasci-zupcevic-5ieFQPJayg0-unsplash.jpg">
+    </div>
+    <div class="flex flex-col justify-center p-6 text-center rounded-sm lg:max-w-md xl:max-w-lg lg:text-left">
+      <h1 class="text-xl font-bold leading-none lg:text-3xl">Podstawy
+        Kuchni Świata
+      </h1>
+      <p class="mt-6 mb-8 text-lg sm:mb-12 normal-case">Kuchnia świata to niezwykle bogaty temat, który z pewnością zainteresuje
+        wielu miłośników kulinariów. W skrócie, kuchnie różnych państw i regionów cechują się nie tylko różnorodnością
+        smaków, ale także kulturą, historią oraz dostępnością składników.
+      </p>
+      <div
+        class="flex flex-col space-y-4 sm:items-center sm:justify-center sm:flex-row sm:space-y-0 sm:space-x-4 lg:justify-start">
+        <a class="px-4 py-3 text-sm font-semibold border border-gray-800" href="#" rel="noopener noreferrer">Zobacz
+          post</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-stone-100">
+  <div class="container flex flex-col justify-center p-4 mx-auto">
+    <div class="grid grid-cols-1 gap-4 lg:grid-cols-4 sm:grid-cols-2">
+      <img alt="img" class="object-cover w-full bg-gray-500 aspect-square" src="assets/images/food1.jpg">
+      <img alt="img" class="object-cover w-full bg-gray-500 aspect-square" src="assets/images/food2.jpg">
+      <img alt="img" class="object-cover w-full bg-gray-500 aspect-square" src="assets/images/food3.jpg">
+      <img alt="img" class="object-cover w-full bg-gray-500 aspect-square" src="assets/images/food4.jpg">
+    </div>
+  </div>
+</section>
+
+<div class="w-full pt-20 bg-stone-100">
   <section>
+    <h1 class="text-2xl text-center font-bold mb-10">Najnowsze przepisy</h1>
     <div class="grid lg:grid-cols-3 gap-8 mb-4 px-4 mx-auto">
       <recipe-card *ngFor="let recipe of favouriteRecipes" [recipe]="recipe"
                    [routerLink]="['/recipe/detail/' + this.recipe.id]"></recipe-card>
+    </div>
+    <div class="text-center mx-auto pb-8">
+      <a [routerLink]="'/recipe'" class="uppercase text-sm font-bold">Przejdź do wszystkich przepisów → </a>
     </div>
   </section>
 </div>
